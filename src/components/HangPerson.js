@@ -18,12 +18,26 @@ export default class HangPerson extends Component {
     }
   }
 
+  handleGuess = (e) => {
+    let letter = e.target.value;
+    this.setState
+  }
+
   guessedWord() {
-    return this.state.answer.split('').map(letter => (this.state.guessed.has(letter) ? letter : " _ "));
+    return this.state.answer.split('').map(letter => (this.state.guessed.has(letter) ? letter : ' _ '));
+  }
+
+  generateButtons() {
+    return "abcdefghijklmnopqrstuvwxyz".split('').map(letter => (
+      <button key={letter} value={letter} onClick={this.handleGuess}>
+        {letter}
+      </button>
+    ));
   }
 
   render() {
     const gameOver = this.state.mistake >= this.props.maxWrong;
+    let gameStat = this.generateButtons();
 
     return (
       <>
@@ -46,4 +60,3 @@ export default class HangPerson extends Component {
     )
   }
 }
-
