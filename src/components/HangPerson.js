@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./../styles/HangPerson.css";
-import { randomWord } from './Words.js';
+import RandomWord from './Words.js';
 
 export default class HangPerson extends Component {
 
   static defaultProps = {
     maxWrong: 6,
-    images: [step0, step1, step3, step4, step5, step6]
+    // images: [step0, step1, step3, step4, step5, step6]
   }
 
   constructor(props) {
@@ -14,13 +14,13 @@ export default class HangPerson extends Component {
     this.state = {
       mistake: 0,
       guessed: new Set([]),
-      answer: randomWord()
+      answer: RandomWord()
     }
   }
   render() {
     return (
       <>
-        <h1>HANGPERSON</h1>
+        <h1>{this.state.answer}</h1>
       </>
     )
   }
