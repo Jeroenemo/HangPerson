@@ -1,10 +1,13 @@
 import React from "react";
+import { Container } from "react-bootstrap"
 import HangPerson from "./components/HangPerson";
 
 function App() {
   return (
     <div className="App">
-      <HangPerson />
+      <Container>
+        <HangPerson />
+      </Container>
     </div>
   );
 }

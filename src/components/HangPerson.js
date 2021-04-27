@@ -17,10 +17,31 @@ export default class HangPerson extends Component {
       answer: RandomWord()
     }
   }
+
+  guessedWord() {
+    return this.state.answer.split('').map(letter => (this.state.guessed.has(letter) ? letter : " _ "));
+  }
+
   render() {
+    const gameOver = this.state.mistake >= this.props.maxWrong;
+
     return (
       <>
-        <h1>{this.state.answer}</h1>
+        <div className="HangPerson">
+          <h1>HANG PERSON</h1>
+          <div className="float-right">
+            Wrong Guesses: {this.state.mistake} of {this.props.maxWrong}
+          </div>
+          <div className="text-center">
+            {/* <img src={this.props.images[this.state.mistake]} /> */}
+          </div>
+          <div className="text-center">
+            <p>Guess the word:</p>
+            <p>
+              {!gameOver ? this.guessedWord() : this.state.answer}
+            </p>
+          </div>
+        </div>
       </>
     )
   }
