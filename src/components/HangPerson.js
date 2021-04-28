@@ -18,9 +18,12 @@ export default class HangPerson extends Component {
     }
   }
 
-  handleGuess = (e) => {
-    let letter = e.target.value;
-    this.setState
+  handleGuess = (event) => {
+    let letter = event.target.value;
+    this.setState(state => ({
+      guessed: state.guessed.add(letter),
+      mistake: state.mistake + (state.answer.includes(letter) ? 0 : 1)
+    }));
   }
 
   guessedWord() {
@@ -29,11 +32,12 @@ export default class HangPerson extends Component {
 
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split('').map(letter => (
-      <button key={letter} value={letter} onClick={this.handleGuess}>
+      <button key={letter} value={letter} onClick={this.handleGuess} disabled={this.state.guessed.has(letter)}>
         {letter}
       </button>
     ));
   }
+  
 
   render() {
     const gameOver = this.state.mistake >= this.props.maxWrong;
@@ -54,6 +58,10 @@ export default class HangPerson extends Component {
             <p>
               {!gameOver ? this.guessedWord() : this.state.answer}
             </p>
+            <p>
+              {gameStat}
+            </p>
+            <button onClick={this.resetButton}>Reset</button>
           </div>
         </div>
       </>
