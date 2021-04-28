@@ -37,7 +37,14 @@ export default class HangPerson extends Component {
       </button>
     ));
   }
-  
+
+  resetButton = () => {
+    this.setState({
+      mistake: 0,
+      guessed: new Set([]),
+      anwer: RandomWord()
+    });
+  }
 
   render() {
     const gameOver = this.state.mistake >= this.props.maxWrong;
