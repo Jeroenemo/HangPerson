@@ -42,13 +42,22 @@ export default class HangPerson extends Component {
     this.setState({
       mistake: 0,
       guessed: new Set([]),
-      anwer: RandomWord()
+      answer: RandomWord()
     });
   }
 
   render() {
     const gameOver = this.state.mistake >= this.props.maxWrong;
+    const isWinner = this.guessedWord().join('') === this.state.answer;
     let gameStat = this.generateButtons();
+
+    if (isWinner) {
+      gameStat = "YOU WON"
+    }
+
+    if (gameOver) {
+      gameStat = "YOU LOST"
+    }
 
     return (
       <>
