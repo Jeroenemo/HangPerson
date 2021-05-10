@@ -1,4 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React, { useContext } from 'react';
+import { Context } from "../context/hangpersonContext";
+
 import RandomWords from 'random-words';
 import './../styles/HangPerson.css';
 import one from './../img/one.png';
@@ -10,15 +12,16 @@ import six from './../img/six.png';
 import seven from './../img/seven.png';
 
 export default function HangPerson() {
+  const {mistake, setMistake, guess, setGuess, answer, setAnswer} = useContext(Context);
 
   const defaultProps = {
     maxWrong: 7,
     images: ["", one, two, three, four, five, six, seven]
   }
   
-  const [mistake, setMistake] = useState(0);
-  const [guess, setGuess] = useState(new Set([]));
-  const [answer, setAnswer] = useState(RandomWords());
+  // const [mistake, setMistake] = useState(0);
+  // const [guess, setGuess] = useState(new Set([]));
+  // const [answer, setAnswer] = useState(RandomWords());
 
   const handleGuess = (event) => {
     let letter = event.target.value;
