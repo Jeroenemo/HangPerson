@@ -9,7 +9,7 @@ import five from './../img/five.png';
 import six from './../img/six.png';
 import seven from './../img/seven.png';
 
-export default function HangPerson_2() {
+export default function HangPerson() {
 
   const defaultProps = {
     maxWrong: 7,
